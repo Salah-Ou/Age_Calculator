@@ -71,7 +71,7 @@ public:
         return false;
     }
 
-    bool registerUser() {
+    bool registerUser(string& loggedInUsername) {
         while (true) {
             system("cls");
             cout << "\n\n\n\t\t\t\t       Sign Up\n";
@@ -130,7 +130,8 @@ public:
             saveUsers();
             cout << "\n\t\tRegistration successful! You can now login.\n";
             Sleep(2000);
-            return true;
+            return loginUser(loggedInUsername);
+            // return true;
         }
     }
 
@@ -365,7 +366,8 @@ int main() {
 
         switch (choice) {
         case '1':
-            userManager.registerUser();
+            userManager.registerUser(loggedInUsername);
+            goto AgeCalculator ;
             break;
         case '2':
             if (userManager.loginUser(loggedInUsername)) {
